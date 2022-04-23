@@ -1,4 +1,4 @@
-This is an artificial intilligence created by me. Her name in "HOPE".
+This is an Artificial intelligence created by me. Her name in "HOPE".
 
 You need to install some modules for HOPE to work. The required modules are listed below with the accurate syntax to inslall them, you just need to install them one by one:-
 
