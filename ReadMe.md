@@ -2,23 +2,23 @@ This is an Artificial intelligence created by me. Her name in "HOPE".
 
 You need to install some modules for HOPE to work. The required modules are listed below with the accurate syntax to inslall them, you just need to install them one by one:-
 
-a) pip install pyttsx3
+	a) pip install pyttsx3
 
-b) pip install SpeechRecognition
+	b) pip install SpeechRecognition
 
-c) pip install wikipedia
+	c) pip install wikipedia
 
-d) pip install webbrowser
+ 	d) pip install webbrowser
 
-e) pip install os
+ 	e) pip install os
 
-f) pip install datetime
+ 	f) pip install datetime
 
-g) pip install pywhatkit
+ 	g) pip install pywhatkit
 
-h) pip install sys
+ 	h) pip install sys
 
-i) pip install logging
+ 	i) pip install logging
 
 She can do a number of tasks without any difficulty but there are some task that require a little attention from tho user for it to execute. 
 
