@@ -1,11 +1,11 @@
 from logging import exception
+# from re import X
 import pyttsx3
 import speech_recognition as sr
 import wikipedia
 import webbrowser
 import os
 import datetime
-import random
 import pywhatkit
 import sys
 engine = pyttsx3.init('sapi5')
@@ -13,7 +13,6 @@ pyttsx3.init()
 
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[2].id)
-
 
 def speak(audio):
     engine.say(audio)
@@ -27,11 +26,10 @@ def wishme():
         speak("Good afternoon")
     else:
         speak("Good evening")
-    speak(" i am hope, an artificial intiligence. how can i assist you?")
+    speak(" i am hope, an artificial intiligence. You can communicate with me with text messages or via audio message. If you want to chat then press 1 or else press 2")
 
 def takecommand():
     '''it takes microphone input from the user and return string inputs'''
-
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
@@ -52,91 +50,126 @@ def takecommand():
         return "None"
     return query
 
-if __name__ == "__main__":
-    wishme()
-    while(True):
-        query = takecommand().lower()
-        # logic for executing tasks based on query
+wishme()
 
-        if 'search' in query:
-            try:
-                speak("Searching wikipedia.....")
-                query = query.replace("wikipedia", "")
-                results = wikipedia.summary(query, sentences=3)
-                speak("According to wikipedia")
-                print(results)
-                speak(results)
-            except Exception as e:
-                print("An Error Occured!")
-                speak("An Error Occured!")
-        elif "exit" in query:
-            speak("Good bye master!")
-            sys.exit()
-        elif "open youtube" in query:
-            speak("What should I play on Youtube?")
-            a = takecommand().lower()
-            print(f"User said:{a}")
-            pywhatkit.playonyt(f"{a}")
-        elif "open google" in query:
-            speak("What should I search on Google?")
-            b = takecommand().lower()
-            print(f"User said:{b}")
-            pywhatkit.search(f"{b}")
-        elif "music" in query:
-            music_dir = 'D:\\Songs1\\'
-            songs = os.listdir(music_dir)
-            # a = random.choice(songs)
-            # print(songs)
-            os.startfile(os.path.join(music_dir,songs[0]))
-        elif "time" in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Sir, the time is {strTime}")
-            print(f"Sir the time is{strTime}")
-        elif "open vs code" in query:
-            vsPath = "C:\\Users\\pc\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-            os.startfile(vsPath)
-        elif "open discord" in query:
-            disPath = "C:\\Users\\pc\\AppData\\Local\\Discord\\app-1.0.9004\\Discord.exe"
-            os.startfile(disPath)
-        elif "open chrome" in query:
-            os.system("start chrome")
-        elif "open bluestacks" in query:
-            bluePath = "C:\\Program Files\\BlueStacks_nxt\\HD-Player.exe"
-            os.startfile(bluePath)
-        elif "open github" in query:
-            webbrowser.open("https://github.com/")
-        elif "open opera" in query:
-            os.system("start opera gx")      
-        elif "open torrent" in query:
-            torPath = "C:\\Users\\pc\\AppData\\Roaming\\uTorrent\\uTorrent.exe"
-            os.startfile(torPath)
-        elif "open zoom" in query:
-            zoPath = "C:\\Users\\pc\\AppData\\Roaming\\Zoom\\bin\\Zoom.exe"
-            os.startfile(zoPath)
-        elif "open ig" in query:
-            url = "https://www.instagram.com"
-            opPath = "C:\\Users\\pc\\AppData\\Local\\Programs\\Opera GX\\launcher.exe"
-            webbrowser.register('opera gx', None,webbrowser.BackgroundBrowser(opPath))
-            webbrowser.get('opera gx').open(url)
-        elif "open vpn" in query:
-            vPath = "C:\\Program Files (x86)\\Proton Technologies\\ProtonVPN\\ProtonVPN.exe"
-            os.startfile(vPath)
-        elif "open cmd" in query:
-            os.system("start cmd")
-        else:
-            speak(f"Would you like me to search {query} on google?")
-            z = takecommand().lower()
-            if "yes" in z:
+z = int(input())
+if z == 1:
+    if __name__ == "__main__":
+        while(True):
+            use = str(input("Type:"))
+            if 'search' in use:
                 try:
-                    speak("Searching.....")
+                    speak("Searching wikipedia.....")
+                    use = use.replace("wikipedia", "")
+                    results = wikipedia.summary(use, sentences=3)
+                    speak("According to wikipedia")
+                    print(results)
+                    speak(results)
+                except Exception as e:
+                    print("An Error Occured!")
+                    speak("An Error Occured!")
+            elif "exit" in use:
+                speak("Good bye master!")
+                sys.exit()
+            elif "open youtube" in use:
+                speak("What should I play on Youtube?")
+                a = str(input())
+                print(f"User said:{a}")
+                pywhatkit.playonyt(f"{a}")
+            elif "open google" in use:
+                speak("What should I search on Google?")
+                b = str(input())
+                print(f"User said:{b}")
+                pywhatkit.search(f"{b}")
+            
+            elif "time" in use:
+                strTime = datetime.datetime.now().strftime("%H:%M:%S")
+                speak(f"Sir, the time is {strTime}")
+                print(f"Sir the time is{strTime}")
+            
+            elif "open chrome" in use:
+                os.system("start chrome")
+            elif "open github" in use:
+                webbrowser.open("https://github.com/")
+            elif "open opera" in use:
+                os.system("start opera gx")      
+            elif "open cmd" in use:
+                os.system("start cmd")
+            else:
+                speak(f"Would you like me to search {use} on google?")
+                X = str(input())
+                if "yes" in X:
+                    try:
+                        speak("Searching.....")
+                        use = use.replace("wikipedia", "")
+                        results = wikipedia.summary(use, sentences=3)
+                        speak("According to wikipedia")
+                        print(results)
+                        speak(results)
+                    except Exception as e:
+                        print("No result found!")
+                        speak("No result found!")
+                elif "no" in X:
+                    print("Ok")
+                    speak("Ok")
+
+
+elif z == 2:
+
+
+    if __name__ == "__main__":
+        # wishme()
+        while(True):
+            query = takecommand().lower
+            # logic for executing tasks based on query
+            if 'search' in query:
+                try:
+                    speak("Searching wikipedia.....")
                     query = query.replace("wikipedia", "")
                     results = wikipedia.summary(query, sentences=3)
                     speak("According to wikipedia")
                     print(results)
                     speak(results)
                 except Exception as e:
-                    print("No result found!")
-                    speak("No result found!")
-            elif "no" in z:
-                print("Ok")
-                speak("Ok")
+                    print("An Error Occured!")
+                    speak("An Error Occured!")
+            elif "exit" in query:
+                speak("Good bye master!")
+                sys.exit()
+            elif "open youtube" in query:
+                speak("What should I play on Youtube?")
+                a = takecommand().lower()
+                print(f"User said:{a}")
+                pywhatkit.playonyt(f"{a}")
+            elif "open google" in query:
+                speak("What should I search on Google?")
+                b = takecommand().lower()
+                print(f"User said:{b}")
+                pywhatkit.search(f"{b}")
+            elif "time" in query:
+                strTime = datetime.datetime.now().strftime("%H:%M:%S")
+                speak(f"Sir, the time is {strTime}")
+                print(f"Sir the time is{strTime}")
+            elif "open chrome" in query:
+                os.system("start chrome")
+            elif "open github" in query:
+                webbrowser.open("https://github.com/")
+            elif "open cmd" in query:
+                os.system("start cmd")
+            else:
+                speak(f"Would you like me to search {query} on google?")
+                z = takecommand().lower()
+                if "yes" in z:
+                    try:
+                        speak("Searching.....")
+                        query = query.replace("wikipedia", "")
+                        results = wikipedia.summary(query, sentences=3)
+                        speak("According to wikipedia")
+                        print(results)
+                        speak(results)
+                    except Exception as e:
+                        print("No result found!")
+                        speak("No result found!")
+                elif "no" in z:
+                    print("Ok")
+                    speak("Ok")
