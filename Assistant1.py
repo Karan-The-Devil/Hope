@@ -1,5 +1,4 @@
 from logging import exception
-# from re import X
 import pyttsx3
 import speech_recognition as sr
 import wikipedia
@@ -115,13 +114,9 @@ if z == 1:
 
 
 elif z == 2:
-
-
     if __name__ == "__main__":
-        # wishme()
         while(True):
             query = takecommand().lower
-            # logic for executing tasks based on query
             if 'search' in query:
                 try:
                     speak("Searching wikipedia.....")
